@@ -275,25 +275,55 @@
 
   
     <div class="site-search">
-      
-  <form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
+      <% if(theme.swift_search.enable) { %>
+    <div  id="container" class="page">
+      <div id="st-results-container" style="width:70%; margin:1.5em auto">正在加载搜索结果，请稍等。</div>
+  <style>
+.st-result-text {
+     background: #fafafa;
+      display: block;
+      border-left: 0.5em solid #ccc;
+      -webkit-transition: border-left 0.45s;
+      -moz-transition: border-left 0.45s;
+      -o-transition: border-left 0.45s;
+      -ms-transition: border-left 0.45s;
+      transition: border-left 0.45s;
+      padding: 0.5em;
+    }
+@media only screen and (min-width: 768px) {
+  .st-result-text {
+    padding: 1em;
+      }
+}
+.st-result-text:hover {
+      border-left: 0.5em solid #ea6753;
+    }
+.st-result-text h3 a{
+      color: #2ca6cb;
+      line-height: 1.5;
+      font-size: 22px;
+    }
+.st-snippet em {
+      font-weight: bold;
+      color: #ea6753;
+    }
+</style>
+<% } %>
 
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-  _st('install', 'j4hP1riLyHbfexjsns1e','2.0.0');
-</script>
-
-
+作者：drunkevil
+链接：http://www.jianshu.com/p/2010ad07d960
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
     </div>
   
 </nav>
+
+<% if (theme.swift_search.enable){ %>
+    <form class="search" action="<%- config.root %>search/index.html" method="get" accept-charset="utf-8">
+    <input type="text" id="st-search-inpu" maxlength="20" placeholder="搜索" />
+    </form>
+<% }
 
 
 
@@ -654,6 +684,15 @@
   </a>
 </div>
 
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','j4hP1riLyHbfexjsns1e','2.0.0');
+</script>
 
         
 
