@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qianbajin.com/"/>
-  <updated>2017-09-24T06:34:07.451Z</updated>
+  <updated>2017-09-24T06:45:53.451Z</updated>
   <id>http://www.qianbajin.com/</id>
   
   <author>
@@ -20,47 +20,52 @@
     <link href="http://www.qianbajin.com/Android-Studio-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/"/>
     <id>http://www.qianbajin.com/Android-Studio-快捷键整理/</id>
     <published>2017-09-24T03:54:39.000Z</published>
-    <updated>2017-09-24T06:34:07.451Z</updated>
+    <updated>2017-09-24T06:45:53.451Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="Android-Studio-快捷键整理，基于个人使用习惯"><a href="#Android-Studio-快捷键整理，基于个人使用习惯" class="headerlink" title="Android Studio 快捷键整理，基于个人使用习惯"></a>Android Studio 快捷键整理，基于个人使用习惯</h4><pre><code>Ctrl + C                    复制
-Ctrl + V                    粘贴
-Ctrl + A                    全选
-Ctrl + S                    保存
-Ctrl + D                    复制行/复制当前选中代码
-Ctrl + F                    在当前窗口进行文本搜索
-Ctrl + X                    删除行/剪切
-Ctrl + Z                    撤销
-Ctrl + P                    展示当前方法需要的参数,包括参数类型
-Ctrl + F12                    打开当前类结构对话框,支持搜索方法,变量
-Ctrl + N                    关键字快速定位到类
-Ctrl + shift + N            关键字快速定位到文件,包括XML等资源文件(类似双击shift,但会对文件分类,定位更准确)
-Ctrl + alt + shift + N        关键字快速定位到标志(会搜索到R文件的引用,不常用,很少用)
-Ctrl + shift + Z            取消撤销
-Ctrl + w                    选中代码块
-Ctrl + shift + W            取消选中代码块
-F2                            快速定位到代码报错处
-F6                            移动（将当前类移到其他包或其他module）
-F7                            打断点(debug)时 跳到方法内部
-F8                            打断点(debug)时 跳到下一步
-F9                            打断点(debug)时 跳出此次断点
-alt + 2                        打开Android Monitor 窗口(alt + 数字键,可以打开as四周带数字的窗口)
-alt + S                        运行APP(自己加的快捷键,同 shift + F10)
-alt + D                        清除logcat 日志(自己加的快捷键,通常配合 alt + 2 一起使用,需要观察日志时通常alt+s,alt+2,alt+d 一起使用)
-alt + insert                快速插入get/set/toString 等方法
-alt + enter                    代码快速提示,感觉是as用的最多的一个快捷键
-shift + S                    打开当前类所在文件夹 （自己修改的快捷键,Show in Explorer）
-shift + F                    全局搜索   （自己修改的快捷键,Find in Path）
-Ctrl + alt + T                将选中代码用 try/catch 等语句包裹
-Ctrl + alt + O                快速导包/移除包
-Ctrl + alt + M                将选中代码块抽取成方法
-Ctrl + alt + S                打开设置窗口
-Ctrl + alt + shift + S        打开工程结构窗口
-Ctrl + shift + F            代码格式化  （自己修改的快捷键）
-Ctrl + shift + V            打开粘贴板
-Ctrl + shift + S            将选中代码合并到一行,同 (Ctrl + shift + j,join in line）
-Ctrl + shift + U            将选中代码转换为大写/小写
-Ctrl + shift + space        代码自动补全
-alt + shift    + R                重命名类/方法/变量
+    <content type="html"><![CDATA[<h4 id="Android-Studio-快捷键整理，基于个人使用习惯"><a href="#Android-Studio-快捷键整理，基于个人使用习惯" class="headerlink" title="Android Studio 快捷键整理，基于个人使用习惯"></a>Android Studio 快捷键整理，基于个人使用习惯</h4><pre><code>Ctrl + C                            复制
+Ctrl + V                            粘贴
+Ctrl + A                            全选
+Ctrl + S                            保存
+Ctrl + D                            复制行/复制当前选中代码
+Ctrl + F                            在当前窗口进行文本搜索
+Ctrl + X                            删除行/剪切
+Ctrl + Z                            撤销
+Ctrl + P                            展示当前方法需要的参数,包括参数类型
+Ctrl + F12                            打开当前类结构对话框,支持搜索方法,变量
+Ctrl + N                            关键字快速定位到类
+Ctrl + shift + N                    关键字快速定位到文件,包括XML等资源文件(类似双击shift,但会对文件分类,定位更准确)
+Ctrl + alt + shift + N                关键字快速定位到标志(会搜索到R文件的引用,不常用,很少用)
+Ctrl + shift + Z                    取消撤销
+Ctrl + w                            选中代码块
+Ctrl + shift + W                    取消选中代码块
+
+F2                                    快速定位到代码报错处
+F6                                    移动（将当前类移到其他包或其他module）
+F7                                    打断点(debug)时 跳到方法内部
+F8                                    打断点(debug)时 跳到下一步
+F9                                    打断点(debug)时 跳出此次断点
+
+alt + 2                                打开Android Monitor 窗口(alt + 数字键,可以打开as四周带数字的窗口)
+alt + S                                运行APP(自己加的快捷键,同 shift + F10)
+alt + D                                清除logcat 日志(自己加的快捷键,通常配合 alt + 2 一起使用,需要观察日志时通常alt+s,alt+2,alt+d 一起使用)
+alt + insert                        快速插入get/set/toString 等方法
+alt + enter                            代码快速提示,感觉是as用的最多的一个快捷键
+
+shift + S                            打开当前类所在文件夹 （自己修改的快捷键,Show in Explorer）
+shift + F                            全局搜索   （自己修改的快捷键,Find in Path）
+
+Ctrl + alt + T                        将选中代码用 try/catch 等语句包裹
+Ctrl + alt + O                        快速导包/移除包
+Ctrl + alt + M                        将选中代码块抽取成方法
+Ctrl + alt + S                        打开设置窗口
+Ctrl + alt + shift + S                打开工程结构窗口
+Ctrl + shift + F                    代码格式化  （自己修改的快捷键）
+Ctrl + shift + V                    打开粘贴板
+Ctrl + shift + S                    将选中代码合并到一行,同 (Ctrl + shift + j,join in line）
+Ctrl + shift + U                    将选中代码转换为大写/小写
+Ctrl + shift + space                代码自动补全
+
+alt + shift    + R                        重命名类/方法/变量
 </code></pre>]]></content>
     
     <summary type="html">
