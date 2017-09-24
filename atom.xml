@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qianbajin.com/"/>
-  <updated>2017-09-24T06:45:53.451Z</updated>
+  <updated>2017-09-24T08:22:37.241Z</updated>
   <id>http://www.qianbajin.com/</id>
   
   <author>
@@ -16,13 +16,28 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>adb 命令收集</title>
+    <link href="http://www.qianbajin.com/adb-%E5%91%BD%E4%BB%A4%E6%94%B6%E9%9B%86/"/>
+    <id>http://www.qianbajin.com/adb-命令收集/</id>
+    <published>2017-09-24T08:22:37.000Z</published>
+    <updated>2017-09-24T08:22:37.241Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Android Studio 快捷键整理</title>
     <link href="http://www.qianbajin.com/Android-Studio-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/"/>
     <id>http://www.qianbajin.com/Android-Studio-快捷键整理/</id>
     <published>2017-09-24T03:54:39.000Z</published>
-    <updated>2017-09-24T06:45:53.451Z</updated>
+    <updated>2017-09-24T08:19:57.747Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="Android-Studio-快捷键整理，基于个人使用习惯"><a href="#Android-Studio-快捷键整理，基于个人使用习惯" class="headerlink" title="Android Studio 快捷键整理，基于个人使用习惯"></a>Android Studio 快捷键整理，基于个人使用习惯</h4><pre><code>Ctrl + C                            复制
+    <content type="html"><![CDATA[<p>Android Studio 快捷键整理，基于个人使用习惯<a id="more"></a></p>
+<pre><code>Ctrl + C                            复制
 Ctrl + V                            粘贴
 Ctrl + A                            全选
 Ctrl + S                            保存
@@ -59,18 +74,18 @@ Ctrl + alt + O                        快速导包/移除包
 Ctrl + alt + M                        将选中代码块抽取成方法
 Ctrl + alt + S                        打开设置窗口
 Ctrl + alt + shift + S                打开工程结构窗口
+
 Ctrl + shift + F                    代码格式化  （自己修改的快捷键）
 Ctrl + shift + V                    打开粘贴板
 Ctrl + shift + S                    将选中代码合并到一行,同 (Ctrl + shift + j,join in line）
 Ctrl + shift + U                    将选中代码转换为大写/小写
 Ctrl + shift + space                代码自动补全
-
 alt + shift    + R                        重命名类/方法/变量
 </code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;Android-Studio-快捷键整理，基于个人使用习惯&quot;&gt;&lt;a href=&quot;#Android-Studio-快捷键整理，基于个人使用习惯&quot; class=&quot;headerlink&quot; title=&quot;Android Studio 快捷键整理，基于个人使用习惯&quot;&gt;&lt;/a
+      &lt;p&gt;Android Studio 快捷键整理，基于个人使用习惯
     
     </summary>
     
@@ -86,7 +101,7 @@ alt + shift    + R                        重命名类/方法/变量
     <link href="http://www.qianbajin.com/%E6%B5%8B%E8%AF%95%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
     <id>http://www.qianbajin.com/测试上传图片/</id>
     <published>2017-07-24T15:16:11.000Z</published>
-    <updated>2017-07-24T15:38:52.375Z</updated>
+    <updated>2017-09-24T08:27:04.611Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简单测试"><a href="#简单测试" class="headerlink" title="简单测试"></a>简单测试</h2><p>这只是做一个测试而已</p>
 <p><img src="http://otlhlfyz3.bkt.clouddn.com/15121610576740.jpg" alt=""></p>

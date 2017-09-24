@@ -4,8 +4,38 @@
 
     
   <url>
+    <loc>http://www.qianbajin.com/%E6%B5%8B%E8%AF%95%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/</loc>
+    <lastmod>2017-09-24T08:27:04.611Z</lastmod>
+    <data>
+        <display>
+        <title>测试上传图片</title>
+        <pubTime>2017-07-24T15:16:11.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qianbajin.com/adb-%E5%91%BD%E4%BB%A4%E6%94%B6%E9%9B%86/</loc>
+    <lastmod>2017-09-24T08:22:37.241Z</lastmod>
+    <data>
+        <display>
+        <title>adb 命令收集</title>
+        <pubTime>2017-09-24T08:22:37.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qianbajin.com/Android-Studio-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/</loc>
-    <lastmod>2017-09-24T06:45:53.451Z</lastmod>
+    <lastmod>2017-09-24T08:19:57.747Z</lastmod>
     <data>
         <display>
         <title>Android Studio 快捷键整理</title>
@@ -18,21 +48,6 @@
              
               <breadCrumb title="Android Studio" url="http://www.qianbajin.com/categories/Android-Studio/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qianbajin.com/%E6%B5%8B%E8%AF%95%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/</loc>
-    <lastmod>2017-07-24T15:38:52.375Z</lastmod>
-    <data>
-        <display>
-        <title>测试上传图片</title>
-        <pubTime>2017-07-24T15:16:11.000Z</pubTime>
-        
-         
-           
         </display>
     </data>
     </url>
