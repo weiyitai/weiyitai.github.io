@@ -4,25 +4,8 @@
 
     
   <url>
-    <loc>http://www.qianbajin.com/2017/07/30/adb-%E5%91%BD%E4%BB%A4%E6%94%B6%E9%9B%86/</loc>
-    <lastmod>2018-01-24T11:32:35.735Z</lastmod>
-    <data>
-        <display>
-        <title>adb 命令收集</title>
-        <pubTime>2017-07-30T08:22:37.000Z</pubTime>
-        
-        <tag>adb 命令</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.qianbajin.com/2017/07/30/Android-Studio-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/</loc>
-    <lastmod>2018-01-24T11:32:01.823Z</lastmod>
+    <lastmod>2018-01-24T11:55:56.524Z</lastmod>
     <data>
         <display>
         <title>Android Studio 快捷键整理</title>
@@ -35,6 +18,23 @@
              
               <breadCrumb title="Android Studio" url="http://www.qianbajin.com/categories/Android-Studio/"/>
           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qianbajin.com/2017/07/30/adb-%E5%91%BD%E4%BB%A4%E6%94%B6%E9%9B%86/</loc>
+    <lastmod>2018-01-24T11:32:35.735Z</lastmod>
+    <data>
+        <display>
+        <title>adb 命令收集</title>
+        <pubTime>2017-07-30T08:22:37.000Z</pubTime>
+        
+        <tag>adb 命令</tag>
+         
+         
+           
         </display>
     </data>
     </url>
