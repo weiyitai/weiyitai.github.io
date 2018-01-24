@@ -91,7 +91,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="adb 命令," />
 
 
 
@@ -107,16 +107,17 @@
 
 
 
-<meta name="description" content="就这样了">
+<meta name="description" content="列出设备列表   adb devices  输出示例 List of devices attached PBV7N16913007233        device  PBV7N16913007233 为设备序列号,在连接多台设备时可用序列号指定设备安装应用   adb install + 文件路径        //adb install D:\微信.apk 指定某个设备安装应用(当电脑连接多个">
+<meta name="keywords" content="adb 命令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="adb 命令收集">
-<meta property="og:url" content="http://www.qianbajin.com/adb-命令收集/index.html">
+<meta property="og:url" content="http://www.qianbajin.com/2017/09/24/adb-命令收集/index.html">
 <meta property="og:site_name" content="BAJIN&#39;S BLOG">
-<meta property="og:description" content="就这样了">
-<meta property="og:updated_time" content="2017-09-24T08:22:37.241Z">
+<meta property="og:description" content="列出设备列表   adb devices  输出示例 List of devices attached PBV7N16913007233        device  PBV7N16913007233 为设备序列号,在连接多台设备时可用序列号指定设备安装应用   adb install + 文件路径        //adb install D:\微信.apk 指定某个设备安装应用(当电脑连接多个">
+<meta property="og:updated_time" content="2018-01-24T11:10:03.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="adb 命令收集">
-<meta name="twitter:description" content="就这样了">
+<meta name="twitter:description" content="列出设备列表   adb devices  输出示例 List of devices attached PBV7N16913007233        device  PBV7N16913007233 为设备序列号,在连接多台设备时可用序列号指定设备安装应用   adb install + 文件路径        //adb install D:\微信.apk 指定某个设备安装应用(当电脑连接多个">
 
 
 
@@ -144,7 +145,7 @@
 
 
 
-  <link rel="canonical" href="http://www.qianbajin.com/adb-命令收集/"/>
+  <link rel="canonical" href="http://www.qianbajin.com/2017/09/24/adb-命令收集/"/>
 
 
 
@@ -322,7 +323,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.qianbajin.com/adb-命令收集/">
+    <link itemprop="mainEntityOfPage" href="http://www.qianbajin.com/2017/09/24/adb-命令收集/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="钱八斤">
@@ -369,7 +370,7 @@
 
           
           
-             <span id="/adb-命令收集/" class="leancloud_visitors" data-flag-title="adb 命令收集">
+             <span id="/2017/09/24/adb-命令收集/" class="leancloud_visitors" data-flag-title="adb 命令收集">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -394,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  0 字
+                  2,311 字
                 </span>
               
 
@@ -416,7 +417,263 @@
       
 
       
-        
+        <p>列出设备列表  </p>
+<pre><code>adb devices 
+</code></pre><p>输出示例</p>
+<pre><code>List of devices attached
+PBV7N16913007233        device 
+</code></pre><p>PBV7N16913007233 为设备序列号,在连接多台设备时可用序列号指定设备<br>安装应用  </p>
+<pre><code>adb install + 文件路径        //adb install D:\微信.apk
+</code></pre><p>指定某个设备安装应用(当电脑连接多个设备时)</p>
+<pre><code>adb -s 设备序列号 install     + 文件路径        //adb -s PBV7N16913007233 install 文件路径 
+</code></pre><p>保存原apk数据并安装应用</p>
+<pre><code>adb install -r + 文件路径            //adb install -r D:\微信.apk
+</code></pre><p>卸载应用</p>
+<pre><code>adb uninstall + 应用包名            //adb uninstall com.tencent.mobileqq
+</code></pre><p>重启设备</p>
+<pre><code>adb reboot
+</code></pre><p>开启adb服务</p>
+<pre><code>adb start-server
+</code></pre><p>关闭adb服务</p>
+<pre><code>adb kill-server
+</code></pre><h4 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h4><p>复制手机文件到电脑</p>
+<pre><code>adb pull sdcard/360 d:\log        //将SD卡上名为360的文件夹复制到电脑 D盘下的log文件夹,文件同理
+</code></pre><p>复制电脑文件到手机</p>
+<pre><code>adb push d:\log\a.txt sdcard   //将电脑D盘下log文件夹下的a.txt文件复制到SD卡,文件夹同理
+</code></pre><p>进入设备</p>
+<pre><code>adb shell
+</code></pre><p>切换到当前目录的子目录</p>
+<pre><code>cd sdcard             //切换到sdcard
+</code></pre><p>列出当前目录下的所有文件</p>
+<pre><code>ls                
+</code></pre><p>切换到上一层目录</p>
+<pre><code>cd ..
+</code></pre><p>切换到根目录</p>
+<pre><code>cd /
+</code></pre><p>删除文件</p>
+<pre><code>rm 文件路径            //rm sdcard/a.log  删除SD卡名为a.log的文件
+</code></pre><p>强制删除文件</p>
+<pre><code>rm -f 文件路径           //rm sdcard/1/a.txt        强制删除SD卡文件夹1下的a.txt文件
+</code></pre><p>创建文件</p>
+<pre><code>touch sdcard/1/b.md            //在SD卡1文件夹下创建b.md文件
+echo&gt; sdcard/1/c.txt        //在SD卡1文件夹下创建c.txt文件
+</code></pre><p>查看文件内容</p>
+<pre><code>cat casdrd/1/c.txt            //查看c.txt的内容并输出到控制台
+</code></pre><p>重定向写入文件</p>
+<pre><code>echo &quot;new text&quot; &gt; sdcard/1/c.txt    //清空c.txt里面的内容并写入新内容 new text
+</code></pre><p>追加写入文件</p>
+<pre><code>echo &quot;another new text&quot; &gt; sdcard/1/c.txt    //在c.txt的末尾另起一行追加写入another new text
+</code></pre><p>删除空文件夹 </p>
+<pre><code>rmdir 文件夹名称        //rmdir sdcard/1   删除SD卡上名为1的空文件夹
+</code></pre><p>删除文件夹及该文件夹下的所有文件</p>
+<pre><code>rm -r 文件夹名称        //rm sdcard/2       删除SD卡下名为2的文件夹及该文件夹下的所有文件
+</code></pre><p>创建文件夹</p>
+<pre><code>mkdir 文件夹名称            //mkdir sdcard/2       在SD卡上创建名为2的文件夹
+</code></pre><p>移动文件</p>
+<pre><code>mv sdcard/360/a.jpg sdcard/2            //将SD卡360文件夹下的a.jpg移动到SD卡名为2的文件夹下
+</code></pre><p>移动文件并改名</p>
+<pre><code>mv sdcard/360/a.jpg sdcard/2/b.png        //将SD卡360文件夹下的a.jpg移动到SD卡名为2的文件夹下并改名为b.png
+</code></pre><p>移动文件夹</p>
+<pre><code>mv sdcard/2 sdcard/360/        //将SD卡名为2的文件夹移动到360文件夹下
+</code></pre><p>复制文件</p>
+<pre><code>cp sdcard/360/aa.jpg sdcard/2/            //将SD卡360文件夹下的aa.jpg复制到SD卡名为2的文件夹下
+</code></pre><p>文件重命名</p>
+<pre><code>rename 2/a.png 2/ c.png            //将文件夹2下名为 a.png的文件重命名为 c.png
+</code></pre><hr>
+<h4 id="手机截屏"><a href="#手机截屏" class="headerlink" title="手机截屏"></a>手机截屏</h4><p>1.保存到手机</p>
+<pre><code>screencap -p sdcard/a.png                        //进入设备后(adb shell)的操作,保存截屏到SD卡并命名为a.png
+adb shell screencap -p sdcard/a.png                //截取当前屏幕并保存到SD卡并命名为a.png
+adb shell system/bin/screencap -p sdcard/a.png        //截取当前屏幕并保存到SD卡并命名为a.png
+</code></pre><p>2.保存到电脑<br> 在电脑D盘新建文件并命名为 cap.bat的批处理文件,将以下代码拷贝到文件并保存,双击运行批处理文件,就会截取当前屏幕并保存到批处理文件所在文件夹</p>
+<pre><code>@echo off
+set year=%date:~0,4%
+set month=%date:~5,2%
+set day=%date:~8,2%
+set hour=%time:~0,2%
+set min=%time:~3,2%
+set sec=%time:~6,2%
+set name=%year%%month%%day%_%hour%%min%%sec%.png
+rem 下面是输出语句
+::echo %name%
+adb shell screencap -p /sdcard/1/%name%
+adb pull /sdcard/1/%name%
+adb shell rm /sdcard/1/%name%
+::pause &gt;nul
+</code></pre><p>参考:<a href="https://stackoverflow.com/questions/1192476/format-date-and-time-in-a-windows-batch-script" target="_blank" rel="external">https://stackoverflow.com/questions/1192476/format-date-and-time-in-a-windows-batch-script</a></p>
+<h4 id="手机录屏-支持MP4及avi格式-部分手机不支持-默认180s-不录制声音-按Ctrl-C停止录屏"><a href="#手机录屏-支持MP4及avi格式-部分手机不支持-默认180s-不录制声音-按Ctrl-C停止录屏" class="headerlink" title="手机录屏,支持MP4及avi格式(部分手机不支持),默认180s,不录制声音,按Ctrl + C停止录屏"></a>手机录屏,支持MP4及avi格式(部分手机不支持),默认180s,不录制声音,按Ctrl + C停止录屏</h4><p>输入  <code>adb shell screenrecord --help</code> 查看参数配置如下</p>
+<pre><code>Options:
+--size WIDTHxHEIGHT
+Set the video size, e.g. &quot;1280x720&quot;.  Default is the device&apos;s mai
+display resolution (if supported), 1280x720 if not.  For best res
+use a size supported by the AVC encoder.
+--bit-rate RATE
+Set the video bit rate, in megabits per second.  Default 4Mbps.
+--time-limit TIME
+Set the maximum recording time, in seconds.  Default / maximum is
+--rotate
+Rotate the output 90 degrees.
+--verbose
+Display interesting information on stdout.
+--help
+Show this message.
+Recording continues until Ctrl-C is hit or the time limit is reached.
+</code></pre><hr>
+<pre><code>adb shell screenrecord sdcard/1/a.mp4        //手机录屏并保存到SD卡的1文件夹下名为a.mp4
+</code></pre><p>指定录制时间(支持 1 ~ 180 s),如果不指定,默认180s</p>
+<pre><code>adb shell screenrecord --time-limit 10 sdcard/1/b.mp4    //手机录屏10s并保存到SD卡的1文件夹下名为b.mp4
+</code></pre><p>指定录制分辨率</p>
+<pre><code>adb shell screenrecord --size 2560x1440 sdcard/1/c.mp4
+</code></pre><p>指定录制时间跟分辨率</p>
+<pre><code>adb shell screenrecord --time-limit 5 --size 2560x1440 sdcard/1/d.mp4
+</code></pre><p>指定码率</p>
+<pre><code>adb shell screenrecord --bit-rate 5000000 sdcard/1/g.mp4
+</code></pre><h4 id="日志输出"><a href="#日志输出" class="headerlink" title="日志输出"></a>日志输出</h4><p>输出日志到控制台<br>    adb logcat *:d        //打印debug级别日志到控制台<br>日志输出到文件</p>
+<pre><code>adb logcat -d time &gt; D:\log.txt        //将debug级别日志输出到D盘log.txt文件
+</code></pre><p>过滤指定tag的日志并输出到控制台</p>
+<pre><code>adb logcat -s tag        //过滤tag日志并输出到控制台
+</code></pre><p>将log过滤标志为TAG的日志输出到文件</p>
+<pre><code>adb logcat -s tag time &gt; d:\log\a.log
+</code></pre><p>关于过滤包名的我试了下没成功,可参考<a href="https://zhidao.baidu.com/question/684415830553505732.html?si=1&amp;qbpn=1_1&amp;tx=&amp;wtp=wk&amp;word=adb+logcat+%E6%8A%93%E5%8F%96%E6%97%A5%E5%BF%97&amp;fr=solved&amp;from=qb&amp;ssid=&amp;uid=bd_1424494872_66&amp;pu=sz%40224_240%2Cos%40&amp;step=14&amp;bd_page_type=1&amp;init=middle" target="_blank" rel="external">链接</a></p>
+<h4 id="模拟操作设备"><a href="#模拟操作设备" class="headerlink" title="模拟操作设备"></a>模拟操作设备</h4><p>模拟点击屏幕</p>
+<pre><code>adb shell input tap 1000 500     //模拟点击屏幕上坐标为(1000,500)的点
+</code></pre><p>模拟滑动屏幕</p>
+<pre><code>adb shell input swipe 500 500 1000 500        //模拟从点(500,500)滑动到点(1000,500)
+</code></pre><p>模拟按下按键,常用几个keycode 3:为home键 4:back键 24:音量+  25:音量-  26:电源键<br>更多keycode请参考:<a href="https://testerhome.com/topics/1386" target="_blank" rel="external">https://testerhome.com/topics/1386</a></p>
+<pre><code>adb shell input keyevent keycode    //adb shell input keyevent 3  模拟按下hone键
+</code></pre><h4 id="获取设备信息"><a href="#获取设备信息" class="headerlink" title="获取设备信息"></a>获取设备信息</h4><p>设备信息保存在<code>/system/build.prop</code>文件下,通过adb命令</p>
+<pre><code>adb shell cat /system/build.prop
+</code></pre><p>输出如下</p>
+<pre><code># begin build properties
+# autogenerated by buildinfo.sh
+ro.build.id=LMY47X
+ro.build.display.id=LMY47X.G9200ZCU2COJA
+ro.build.version.incremental=G9200ZCU2COJA
+ro.build.version.sdk=22
+ro.build.version.codename=REL
+ro.build.version.all_codenames=REL
+ro.build.version.release=5.1.1
+ro.build.date=Thu Oct 22 19:33:32 KST 2015
+ro.build.date.utc=1445510012
+ro.build.type=user
+ro.build.user=dpi
+ro.build.host=SWDD5618
+ro.build.tags=release-keys
+ro.build.flavor=zerofltezc-user
+ro.product.model=SM-G9200
+ro.product.brand=samsung
+ro.product.name=zerofltezc
+ro.product.device=zerofltechn
+ro.product.board=universal7420
+# ro.product.cpu.abi and ro.product.cpu.abi2 are obsolete,
+# use ro.product.cpu.abilist instead.
+ro.product.cpu.abi=arm64-v8a
+ro.product.cpu.abilist=arm64-v8a,armeabi-v7a,armeabi
+ro.product.cpu.abilist32=armeabi-v7a,armeabi
+ro.product.cpu.abilist64=arm64-v8a
+ro.product.manufacturer=samsung
+ro.product.locale.language=zh
+ro.product.locale.region=CN
+ro.wifi.channels=
+ro.board.platform=exynos5
+# ro.build.product is obsolete; use ro.product.device
+ro.build.product=zerofltechn
+# Do not try to parse description, fingerprint, or thumbprint
+ro.build.description=zerofltezc-user 5.1.1 LMY47X G9200ZCU2COJA release-keys
+ro.build.fingerprint=samsung/zerofltezc/zerofltechn:5.1.1/LMY47X/G9200ZCU2COJA:u
+ser/release-keys
+ro.build.characteristics=phone china_wlan
+# Samsung Specific Properties
+ro.build.PDA=G9200ZCU2COJA
+ro.build.hidden_ver=G9200ZCU2COJA
+ro.config.rm_preload_enabled=0
+ro.build.changelist=5685365
+ro.product_ship=true
+ro.chipname=exynos7420
+# end build properties
+</code></pre><p>可通过如下命令获取该文件的信息,比如<br>获取设备型号</p>
+<pre><code>adb shell getprop ro.product.model        //会输出如 SM-G9200
+</code></pre><p>获取设备品牌</p>
+<pre><code>adb shell getprop ro.product.brand        //输出如samsung
+</code></pre><p>获取系统版本描述</p>
+<pre><code>adb shell getprop ro.build.description    //输出 zerofltezc-user 5.1.1 LMY47X G9200ZCU2COJA release-keys
+</code></pre><p>获取处理器芯片名称</p>
+<pre><code>adb shell getprop ro.chipname    //输出exynos7420
+</code></pre><ul>
+<li>获取设备其他参数</li>
+</ul>
+<p>获取屏幕分辨率</p>
+<pre><code>adb shell wm size
+</code></pre><p>获取屏幕密度</p>
+<pre><code>adb shell wm density
+</code></pre><p>获取屏幕参数</p>
+<pre><code>adb shell dumpsys window displays
+</code></pre><p>三星S6输出如下</p>
+<pre><code>WINDOW MANAGER DISPLAY CONTENTS (dumpsys window displays)
+Display: mDisplayId=0
+init=1440x2560 640dpi cur=1440x2560 app=1440x2560 rng=1440x1340-2560x2460
+deferred=false layoutNeeded=false
+</code></pre><p>华为P9展示虚拟导航栏时输出如下,虚拟导航栏会占用部分屏幕空间</p>
+<pre><code>Display: mDisplayId=0
+init=1080x1920 480dpi cur=1920x1080 app=1794x1080 rng=1080x1008-1794x1722
+deferred=false layoutNeeded=false
+</code></pre><p>华为P9隐藏虚拟导航栏时输出如下:</p>
+<pre><code>Display: mDisplayId=0
+init=1080x1920 480dpi cur=1920x1080 app=1920x1080 rng=1080x1008-1920x1848
+deferred=false layoutNeeded=false
+</code></pre><p>获取CPU信息</p>
+<pre><code>adb shell cat /proc/cpuinfo
+</code></pre><p>输出示例</p>
+<pre><code>Processor       : AArch64 Processor rev 2 (aarch64)
+processor       : 0
+Features        : fp asimd aes pmull sha1 sha2 crc32
+CPU implementer : 0x41
+CPU architecture: AArch64
+CPU variant     : 0x0
+CPU part        : 0xd03
+CPU revision    : 2
+
+Hardware        : SAMSUNG Exynos7420
+</code></pre><p>获取电池状况信息</p>
+<pre><code>adb shell dumpsys battery
+</code></pre><p>输出示例</p>
+<pre><code>Current Battery Service state:
+AC powered: false
+USB powered: true
+Wireless powered: false
+status: 2
+health: 2
+present: true
+level: 73
+scale: 100
+voltage: 3959
+temperature: 301
+technology: Li-ion
+LED Charging: true
+LED Low Battery: true
+current now: -232
+Adaptive Fast Charging Settings: true
+SUPPORT_LOG_BATTERY_USAGE: true
+isTablet: false
+mBatteryMaxTemp: 479
+mBatteryMaxCurrent: 2625
+mBatteryAsocEfs: 88
+mBatteryAsocNow: 90
+FEATURE_SAVE_BATTERY_CYCLE: false
+USE_FAKE_BATTERY: false
+</code></pre><p>获取 WLAN 的 MAC 地址</p>
+<pre><code>adb shell cat /sys/class/net/wlan0/address        //输出 90:b6:86:d0:85:b4
+</code></pre><h4 id="Monkey测试"><a href="#Monkey测试" class="headerlink" title="Monkey测试"></a>Monkey测试</h4><pre><code>adb shell monkey -p your.package.name -v 500             //向指定包名发送500次的模拟点击事件
+adb shell monkey -p com.tencent.mobileqq -v 500        //对qq做500次的monkey测试
+</code></pre><h4 id="更改adb端口"><a href="#更改adb端口" class="headerlink" title="更改adb端口"></a>更改adb端口</h4><p>进入环境变量–&gt;新建–&gt;变量名填入 <code>ANDROID_ADB_SERVER_PORT</code> ,变量值填入一个端口号,如5080,确定,退出 </p>
+<h4 id="使用PackageManage查看软件"><a href="#使用PackageManage查看软件" class="headerlink" title="使用PackageManage查看软件"></a>使用PackageManage查看软件</h4><p>列出所有安装的软件</p>
+<pre><code>adb shell pm list packages
+</code></pre><p>列出所有系统软件</p>
+<pre><code>adb shell pm list packages -s
+</code></pre><p>列出所有disan第三方软件</p>
+<pre><code>adb shell pm list packages -3
+</code></pre><p>更多pm命令可参考 <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="external">Android 调试桥</a></p>
+<p>更多adb命令参考 <a href="http://www.cnblogs.com/JianXu/p/5161179.html" target="_blank" rel="external">adb shell 常用命令</a></p>
+
       
     </div>
 	
@@ -464,6 +721,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/adb-命令/" rel="tag"># adb 命令</a>
+          
+        </div>
+      
 
       
       
@@ -473,7 +736,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Android-Studio-快捷键整理/" rel="next" title="Android Studio 快捷键整理">
+              <a href="/2017/09/24/Android-Studio-快捷键整理/" rel="next" title="Android Studio 快捷键整理">
                 <i class="fa fa-chevron-left"></i> Android Studio 快捷键整理
               </a>
             
@@ -531,8 +794,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ou0ikiour.bkt.clouddn.com/avatar.jpeg"
@@ -547,7 +819,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -569,7 +841,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -638,6 +910,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件操作"><span class="nav-number">1.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手机截屏"><span class="nav-number">2.</span> <span class="nav-text">手机截屏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手机录屏-支持MP4及avi格式-部分手机不支持-默认180s-不录制声音-按Ctrl-C停止录屏"><span class="nav-number">3.</span> <span class="nav-text">手机录屏,支持MP4及avi格式(部分手机不支持),默认180s,不录制声音,按Ctrl + C停止录屏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日志输出"><span class="nav-number">4.</span> <span class="nav-text">日志输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟操作设备"><span class="nav-number">5.</span> <span class="nav-text">模拟操作设备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取设备信息"><span class="nav-number">6.</span> <span class="nav-text">获取设备信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Monkey测试"><span class="nav-number">7.</span> <span class="nav-text">Monkey测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更改adb端口"><span class="nav-number">8.</span> <span class="nav-text">更改adb端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用PackageManage查看软件"><span class="nav-number">9.</span> <span class="nav-text">使用PackageManage查看软件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -654,7 +942,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
