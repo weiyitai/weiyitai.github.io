@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qianbajin.com/"/>
-  <updated>2018-01-24T11:10:03.112Z</updated>
+  <updated>2018-01-24T11:32:35.735Z</updated>
   <id>http://www.qianbajin.com/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>adb 命令收集</title>
-    <link href="http://www.qianbajin.com/2017/09/24/adb-%E5%91%BD%E4%BB%A4%E6%94%B6%E9%9B%86/"/>
-    <id>http://www.qianbajin.com/2017/09/24/adb-命令收集/</id>
-    <published>2017-09-24T08:22:37.000Z</published>
-    <updated>2018-01-24T11:10:03.112Z</updated>
+    <link href="http://www.qianbajin.com/2017/07/30/adb-%E5%91%BD%E4%BB%A4%E6%94%B6%E9%9B%86/"/>
+    <id>http://www.qianbajin.com/2017/07/30/adb-命令收集/</id>
+    <published>2017-07-30T08:22:37.000Z</published>
+    <updated>2018-01-24T11:32:35.735Z</updated>
     
     <content type="html"><![CDATA[<p>列出设备列表  </p>
 <pre><code>adb devices 
@@ -298,10 +298,10 @@ PBV7N16913007233        device
   
   <entry>
     <title>Android Studio 快捷键整理</title>
-    <link href="http://www.qianbajin.com/2017/09/24/Android-Studio-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/"/>
-    <id>http://www.qianbajin.com/2017/09/24/Android-Studio-快捷键整理/</id>
-    <published>2017-09-24T03:54:39.000Z</published>
-    <updated>2017-09-28T15:12:55.573Z</updated>
+    <link href="http://www.qianbajin.com/2017/07/30/Android-Studio-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/"/>
+    <id>http://www.qianbajin.com/2017/07/30/Android-Studio-快捷键整理/</id>
+    <published>2017-07-30T03:54:39.000Z</published>
+    <updated>2018-01-24T11:32:01.823Z</updated>
     
     <content type="html"><![CDATA[<h4 id="Android-Studio-快捷键整理，基于个人使用习惯"><a href="#Android-Studio-快捷键整理，基于个人使用习惯" class="headerlink" title="Android Studio 快捷键整理，基于个人使用习惯"></a>Android Studio 快捷键整理，基于个人使用习惯<a id="more"></a></h4><pre><code>Ctrl + C                            复制
 Ctrl + V                            粘贴
