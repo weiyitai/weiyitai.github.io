@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qianbajin.com/"/>
-  <updated>2018-01-24T11:32:35.735Z</updated>
+  <updated>2018-01-24T12:14:12.810Z</updated>
   <id>http://www.qianbajin.com/</id>
   
   <author>
@@ -14,6 +14,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>你好世界</title>
+    <link href="http://www.qianbajin.com/2018/01/24/%E4%BD%A0%E5%A5%BD%E4%B8%96%E7%95%8C/"/>
+    <id>http://www.qianbajin.com/2018/01/24/你好世界/</id>
+    <published>2018-01-24T12:14:12.000Z</published>
+    <updated>2018-01-24T12:14:12.810Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>adb 命令收集</title>
