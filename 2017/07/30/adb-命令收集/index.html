@@ -114,7 +114,7 @@
 <meta property="og:url" content="http://www.qianbajin.com/2017/07/30/adb-命令收集/index.html">
 <meta property="og:site_name" content="BAJIN&#39;S BLOG">
 <meta property="og:description" content="列出设备列表   adb devices  输出示例 List of devices attached PBV7N16913007233        device  PBV7N16913007233 为设备序列号,在连接多台设备时可用序列号指定设备安装应用   adb install + 文件路径        //adb install D:\微信.apk 指定某个设备安装应用(当电脑连接多个">
-<meta property="og:updated_time" content="2018-01-24T11:32:35.735Z">
+<meta property="og:updated_time" content="2018-09-17T15:44:55.847Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="adb 命令收集">
 <meta name="twitter:description" content="列出设备列表   adb devices  输出示例 List of devices attached PBV7N16913007233        device  PBV7N16913007233 为设备序列号,在连接多台设备时可用序列号指定设备安装应用   adb install + 文件路径        //adb install D:\微信.apk 指定某个设备安装应用(当电脑连接多个">
@@ -395,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  2,311 
+                  2,933 
                 </span>
               
 
@@ -428,10 +428,15 @@ PBV7N16913007233        device
 <pre><code>adb -s 设备序列号 install     + 文件路径        //adb -s PBV7N16913007233 install 文件路径 
 </code></pre><p>保存原apk数据并安装应用</p>
 <pre><code>adb install -r + 文件路径            //adb install -r D:\微信.apk
+</code></pre><p>强行停止某应用</p>
+<pre><code>adb shell am force-stop [pgk]    //adb shell am force-stop com.coolapk.market
 </code></pre><p>卸载应用</p>
 <pre><code>adb uninstall + 应用包名            //adb uninstall com.tencent.mobileqq
 </code></pre><p>重启设备</p>
-<pre><code>adb reboot
+<pre><code>adb reboot  
+</code></pre><p>设备关机</p>
+<pre><code>adb reboot -p  
+sleep 10 &amp;&amp; reboot -p  // 延时10s后关机
 </code></pre><p>开启adb服务</p>
 <pre><code>adb start-server
 </code></pre><p>关闭adb服务</p>
@@ -531,6 +536,10 @@ Recording continues until Ctrl-C is hit or the time limit is reached.
 <pre><code>adb logcat -d time &gt; D:\log.txt        //将debug级别日志输出到D盘log.txt文件
 </code></pre><p>过滤指定tag的日志并输出到控制台</p>
 <pre><code>adb logcat -s tag        //过滤tag日志并输出到控制台
+</code></pre><p>过滤指定tag的日志并输出到控制台并用findstr 命令找到自己想要的关键字</p>
+<pre><code>adb logcat -s tag |findstr aa        //过滤tag日志并输出到控制台
+// 比如打印日志  
+Log.d(&quot;ccc&quot;,&quot;hahahahha&quot;);      // 命令 adb logcat -s ccc |findstr haha  可在众多的log里找到自己关注的信息
 </code></pre><p>将log过滤标志为TAG的日志输出到文件</p>
 <pre><code>adb logcat -s tag time &gt; d:\log\a.log
 </code></pre><p>关于过滤包名的我试了下没成功,可参考<a href="https://zhidao.baidu.com/question/684415830553505732.html?si=1&amp;qbpn=1_1&amp;tx=&amp;wtp=wk&amp;word=adb+logcat+%E6%8A%93%E5%8F%96%E6%97%A5%E5%BF%97&amp;fr=solved&amp;from=qb&amp;ssid=&amp;uid=bd_1424494872_66&amp;pu=sz%40224_240%2Cos%40&amp;step=14&amp;bd_page_type=1&amp;init=middle" target="_blank" rel="external">链接</a></p>
@@ -670,10 +679,91 @@ adb shell monkey -p com.tencent.mobileqq -v 500        //对qq做500次的monkey
 </code></pre><p>列出所有系统软件</p>
 <pre><code>adb shell pm list packages -s
 </code></pre><p>列出所有disan第三方软件</p>
-<pre><code>adb shell pm list packages -3
-</code></pre><p>更多pm命令可参考 <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="external">Android 调试桥</a></p>
+<pre><code>adb shell pm list packages -3  
+</code></pre><p>可以用该命令在应用中获取安装的应用列表包名,代码如下(应该在子线程中操作,因为安装的应用多的话会比较耗时)  </p>
+<pre><code>try {
+    Process process = Runtime.getRuntime().exec(&quot;pm list packages -3&quot;);
+    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+    String line;
+    while ((line = reader.readLine()) != null) {
+        Logger.d(&quot;line:&quot; + line);
+    }
+    reader.close();
+    process.destroy();
+} catch (IOException e) {
+    e.printStackTrace()
+</code></pre><p>打印的日志如下</p>
+<pre><code>line:package:com.weico.international
+line:package:com.quark.browser
+......
+</code></pre><p><strong>不推荐用这种方式获取,因为比较耗时,经测试mi5s(骁龙821)安装93个三方应用,用上述方法获取耗时约1.5~3s,而用<code>pm.getInstalledPackages(0)</code>获取再用flag判断是否三方应用耗时约30ms,有着几十到一百倍的差距,但是现在手机权限管理得越来越严格,有些用户可能不让你获取应用列表,这时候就可以尝试上述方法了</strong></p>
+<p>更多pm命令可参考 <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="external">Android 调试桥</a></p>
 <p>更多adb命令参考 <a href="http://www.cnblogs.com/JianXu/p/5161179.html" target="_blank" rel="external">adb shell 常用命令</a></p>
+<h4 id="用adb刷入手机刷机包"><a href="#用adb刷入手机刷机包" class="headerlink" title="用adb刷入手机刷机包"></a>用adb刷入手机刷机包</h4><pre><code>adb reboot bootloader
+fastboot flash recovery twrp.img
+fastboot reboot
+</code></pre><p>####查看手机占用内存  </p>
+<pre><code>adb -s 2ddaec60 shell    
+dumpsys meminfo com.qianbajin.qiniu
+</code></pre><p>输出如下:</p>
+<pre><code>Applications Memory Usage (in Kilobytes):
+Uptime: 362074860 Realtime: 719391988
 
+MEMINFO in pid 29187 [com.qianbajin.qiniu] 
+               Pss  Private  Private  SwapPss     Heap     Heap     Heap
+             Total    Dirty    Clean    Dirty     Size    Alloc     Free
+            ------   ------   ------   ------   ------   ------   ------
+Native Heap    12190    12148       12        0    20480    16000     4479
+Dalvik Heap     5766     5712        0        0    12963     7778     5185
+Dalvik Other     2131     2108        0        5
+    Stack      476      476        0        0
+   Ashmem        4        4        0        0
+  Gfx dev     4148     4116        8        0
+Other dev        4        0        4        0
+ .so mmap     1855      128      388      160
+.jar mmap        2        0        0        0
+.apk mmap      585        0      176        0
+.ttf mmap       61        0       16        0
+.dex mmap     3865        4     3764        0
+.oat mmap     5050        0     1896        0
+.art mmap     2104      996      176       13
+Other mmap      544        4      148        0
+EGL mtrack    25836    25836        0        0
+GL mtrack     3824     3824        0        0
+  Unknown      857      820        8       25
+    TOTAL    69505    56176     6596      203    33443    23778     9664
+
+App Summary
+                   Pss(KB)
+                    ------
+       Java Heap:     6884
+     Native Heap:    12148
+            Code:     6372
+           Stack:      476
+        Graphics:    33784
+   Private Other:     3108
+          System:     6733
+
+           TOTAL:    69505       TOTAL SWAP PSS:      203
+
+Objects
+           Views:      399         ViewRootImpl:        6
+     AppContexts:        5           Activities:        4
+          Assets:        3        AssetManagers:        2
+   Local Binders:       13        Proxy Binders:       16
+   Parcel memory:        3         Parcel count:       13
+Death Recipients:        0      OpenSSL Sockets:        0
+        WebViews:        0
+
+SQL
+     MEMORY_USED:       94
+PAGECACHE_OVERFLOW:       14          MALLOC_SIZE:       62
+
+DATABASES
+  pgsz     dbsz   Lookaside(b)          cache  Dbname
+     4       36             12         0/15/1  /data/user/0/com.qianbajin.qi
+niu/databases/qiniu.db
+</code></pre>
       
     </div>
 	
@@ -907,7 +997,7 @@ adb shell monkey -p com.tencent.mobileqq -v 500        //对qq做500次的monkey
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件操作"><span class="nav-number">1.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手机截屏"><span class="nav-number">2.</span> <span class="nav-text">手机截屏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手机录屏-支持MP4及avi格式-部分手机不支持-默认180s-不录制声音-按Ctrl-C停止录屏"><span class="nav-number">3.</span> <span class="nav-text">手机录屏,支持MP4及avi格式(部分手机不支持),默认180s,不录制声音,按Ctrl + C停止录屏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日志输出"><span class="nav-number">4.</span> <span class="nav-text">日志输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟操作设备"><span class="nav-number">5.</span> <span class="nav-text">模拟操作设备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取设备信息"><span class="nav-number">6.</span> <span class="nav-text">获取设备信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Monkey测试"><span class="nav-number">7.</span> <span class="nav-text">Monkey测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更改adb端口"><span class="nav-number">8.</span> <span class="nav-text">更改adb端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用PackageManage查看软件"><span class="nav-number">9.</span> <span class="nav-text">使用PackageManage查看软件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件操作"><span class="nav-number">1.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手机截屏"><span class="nav-number">2.</span> <span class="nav-text">手机截屏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手机录屏-支持MP4及avi格式-部分手机不支持-默认180s-不录制声音-按Ctrl-C停止录屏"><span class="nav-number">3.</span> <span class="nav-text">手机录屏,支持MP4及avi格式(部分手机不支持),默认180s,不录制声音,按Ctrl + C停止录屏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日志输出"><span class="nav-number">4.</span> <span class="nav-text">日志输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟操作设备"><span class="nav-number">5.</span> <span class="nav-text">模拟操作设备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取设备信息"><span class="nav-number">6.</span> <span class="nav-text">获取设备信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Monkey测试"><span class="nav-number">7.</span> <span class="nav-text">Monkey测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更改adb端口"><span class="nav-number">8.</span> <span class="nav-text">更改adb端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用PackageManage查看软件"><span class="nav-number">9.</span> <span class="nav-text">使用PackageManage查看软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用adb刷入手机刷机包"><span class="nav-number">10.</span> <span class="nav-text">用adb刷入手机刷机包</span></a></li></ol></div>
             
 
           </div>
