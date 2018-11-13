@@ -36,7 +36,7 @@
     <link href="http://www.qianbajin.com/2017/07/30/adb-%E5%91%BD%E4%BB%A4%E6%94%B6%E9%9B%86/"/>
     <id>http://www.qianbajin.com/2017/07/30/adb-命令收集/</id>
     <published>2017-07-30T08:22:37.000Z</published>
-    <updated>2018-09-17T15:44:55.847Z</updated>
+    <updated>2018-11-13T14:30:42.428Z</updated>
     
     <content type="html"><![CDATA[<p>列出设备列表  </p>
 <pre><code>adb devices 
@@ -153,7 +153,29 @@ Recording continues until Ctrl-C is hit or the time limit is reached.
 <pre><code>adb shell screenrecord --time-limit 5 --size 2560x1440 sdcard/1/d.mp4
 </code></pre><p>指定码率</p>
 <pre><code>adb shell screenrecord --bit-rate 5000000 sdcard/1/g.mp4
-</code></pre><h4 id="日志输出"><a href="#日志输出" class="headerlink" title="日志输出"></a>日志输出</h4><p>输出日志到控制台<br>    adb logcat *:d        //打印debug级别日志到控制台<br>日志输出到文件</p>
+</code></pre><h4 id="日志输出"><a href="#日志输出" class="headerlink" title="日志输出"></a>日志输出</h4><p><strong>解决控制台输出乱码问题</strong></p>
+<ul>
+<li>方法一</li>
+</ul>
+<p>在控制台执行命令  </p>
+<pre><code>chcp 65001          // 将当前控制台输出窗口编码设置为utf-8  
+chcp 936        // 将当前控制台输出窗口编码设置为简体中文(GBK)
+</code></pre><p>以上只是临时的方法,要永久解决控制台乱码问题,需要在注册表添加一项<br>在运行中输入regedit进入注册表,找到 <code>HKEY_CURRENT_USER\Console\%SystemRoot%_system32_cmd.exe</code> 点击右键-&gt;新建 DWORD(32-位)值命名为CodePage ,点击右键-&gt;修改,选择十进制输入65001,然后确定即可</p>
+<ul>
+<li>方法二<br>将以下代码粘贴到一个文本文件中,命名为utf-8.reg 并保存,然后双击即可</li>
+</ul>
+<blockquote>
+<pre><code>Windows Registry Editor Version 5.00  
+[HKEY_CURRENT_USER\Console\%SystemRoot%_system32_cmd.exe]
+&quot;CodePage&quot;=dword:0000fde9
+&quot;FontFamily&quot;=dword:00000036
+&quot;FontWeight&quot;=dword:00000190
+&quot;FaceName&quot;=&quot;Consolas&quot;
+&quot;ScreenBufferSize&quot;=dword:232900d2
+&quot;WindowSize&quot;=dword:002b00d2
+</code></pre></blockquote>
+<p>参考<a href="https://blog.csdn.net/taoshujian/article/details/60325996" target="_blank" rel="external">https://blog.csdn.net/taoshujian/article/details/60325996</a><br>参考<a href="https://www.cnblogs.com/lion-zheng/p/7663735.html" target="_blank" rel="external">https://www.cnblogs.com/lion-zheng/p/7663735.html</a></p>
+<p>输出日志到控制台<br>    adb logcat *:d        //打印debug级别日志到控制台<br>日志输出到文件</p>
 <pre><code>adb logcat -d time &gt; D:\log.txt        //将debug级别日志输出到D盘log.txt文件
 </code></pre><p>过滤指定tag的日志并输出到控制台</p>
 <pre><code>adb logcat -s tag        //过滤tag日志并输出到控制台
