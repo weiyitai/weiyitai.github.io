@@ -91,7 +91,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java," />
 
 
 
@@ -107,15 +107,17 @@
 
 
 
-<meta name="description" content="就这样了">
-<meta property="og:type" content="website">
-<meta property="og:title" content="BAJIN&#39;S BLOG">
-<meta property="og:url" content="http://www.qianbajin.com/categories/Android-Studio/index.html">
+<meta name="description" content="##ScheduledThreadPool 里   scheduleAtFixedRate(Runnable command,long initialDelay,long period,TimeUnit unit); 和scheduleWithFixedDelay(Runnable command,long initialDelay,long period,TimeUnit unit); 的区别">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ScheduledThreadPool里两个方法的区别">
+<meta property="og:url" content="http://www.qianbajin.com/2018/11/20/ScheduledThreadPool里两个方法的区别/index.html">
 <meta property="og:site_name" content="BAJIN&#39;S BLOG">
-<meta property="og:description" content="就这样了">
+<meta property="og:description" content="##ScheduledThreadPool 里   scheduleAtFixedRate(Runnable command,long initialDelay,long period,TimeUnit unit); 和scheduleWithFixedDelay(Runnable command,long initialDelay,long period,TimeUnit unit); 的区别">
+<meta property="og:updated_time" content="2018-11-20T14:55:00.829Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BAJIN&#39;S BLOG">
-<meta name="twitter:description" content="就这样了">
+<meta name="twitter:title" content="ScheduledThreadPool里两个方法的区别">
+<meta name="twitter:description" content="##ScheduledThreadPool 里   scheduleAtFixedRate(Runnable command,long initialDelay,long period,TimeUnit unit); 和scheduleWithFixedDelay(Runnable command,long initialDelay,long period,TimeUnit unit); 的区别">
 
 
 
@@ -143,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="http://www.qianbajin.com/categories/Android-Studio/"/>
+  <link rel="canonical" href="http://www.qianbajin.com/2018/11/20/ScheduledThreadPool里两个方法的区别/"/>
 
 
 
 
 
-      <title>分类: Android Studio | BAJIN'S BLOG</title>
+      <title>ScheduledThreadPool里两个方法的区别 | BAJIN'S BLOG</title>
   
 
 
@@ -175,7 +177,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 	
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -311,45 +313,268 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>Android Studio<small>分类</small>
-      </h1>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/30/Android-Studio-快捷键整理/" itemprop="url">
-              
-                <span itemprop="name">Android Studio 快捷键整理</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-30T11:54:39+08:00"
-              content="2017-07-30" >
-          07-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.qianbajin.com/2018/11/20/ScheduledThreadPool里两个方法的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="钱八斤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ou0ikiour.bkt.clouddn.com/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BAJIN'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ScheduledThreadPool里两个方法的区别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-20T22:20:30+08:00">
+                2018-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/20/ScheduledThreadPool里两个方法的区别/" class="leancloud_visitors" data-flag-title="ScheduledThreadPool里两个方法的区别">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  775 
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##ScheduledThreadPool 里 </p>
+<blockquote>
+<p>scheduleAtFixedRate(Runnable command,long initialDelay,long period,TimeUnit unit); 和<br>scheduleWithFixedDelay(Runnable command,long initialDelay,long period,TimeUnit unit); 的区别</p>
+</blockquote>
+<p>先解释一下几个参数的含义<br>1.command 即要执行的任务<br>2.initialDelay 从执行这段代码开始到执行第一个任务的延时<br>3.unit 延时的时间单位,可以是 毫秒  秒  分钟..</p>
+<p>现有如下代码  </p>
+<pre><code>public void run(View view) {
+Executors.newScheduledThreadPool(2).scheduleAtFixedRate(new DelayRunnable(), 0, 5, TimeUnit.SECONDS);
+}
+
+static class DelayRunnable implements Runnable {
+
+    AtomicInteger i = new AtomicInteger();
+    SimpleDateFormat format = new SimpleDateFormat(&quot;yyyyMMdd HH:mm:ss.sss&quot;, Locale.getDefault());
+
+    private DelayRunnable() {
+        Log.d(&quot;de&quot;, &quot;new DelayRunnable&quot;);
+    }
+
+    @Override
+    public void run() {
+        Log.d(&quot;de&quot;, format.format(new Date()) + &quot;执行任务&quot; + i.getAndIncrement());
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><h3 id="情景1-任务耗时4秒-任务间隔5秒"><a href="#情景1-任务耗时4秒-任务间隔5秒" class="headerlink" title="情景1  任务耗时4秒,任务间隔5秒"></a>情景1  任务耗时4秒,任务间隔5秒</h3><pre><code>try {
+ Thread.sleep(4000);
+ } catch (InterruptedException e) {
+ e.printStackTrace();
+ }
+</code></pre><p>执行run方法,打印日志如下</p>
+<pre><code>20181120 22:18:26.026执行任务0
+20181120 22:18:31.031执行任务1
+20181120 22:18:36.036执行任务2
+20181120 22:18:41.041执行任务3
+20181120 22:18:46.046执行任务4
+20181120 22:18:51.051执行任务5
+</code></pre><p>可以看到,点击run按钮的那一瞬间,就会先执行一次任务,然后每隔5秒钟执行一次</p>
+<h3 id="情景2-任务耗时7秒-任务间隔5秒"><a href="#情景2-任务耗时7秒-任务间隔5秒" class="headerlink" title="情景2  任务耗时7秒,任务间隔5秒"></a>情景2  任务耗时7秒,任务间隔5秒</h3><pre><code>try {
+ Thread.sleep(7000);
+ } catch (InterruptedException e) {
+ e.printStackTrace();
+ }
+</code></pre><p>执行run方法,打印日志如下</p>
+<pre><code>20181120 22:31:10.010执行任务0
+20181120 22:31:17.017执行任务1
+20181120 22:31:24.024执行任务2
+20181120 22:31:31.031执行任务3
+20181120 22:31:38.038执行任务4
+20181120 22:31:45.045执行任务5
+</code></pre><p>可以看到,任务的执行间隔是7秒,也就是当任务执行结束后,时间已经过了预定的时间间隔,会马上执行上次的任务</p>
+<h3 id="情景3-任务耗时4秒-任务间隔5秒"><a href="#情景3-任务耗时4秒-任务间隔5秒" class="headerlink" title="情景3 任务耗时4秒,任务间隔5秒"></a>情景3 任务耗时4秒,任务间隔5秒</h3><p><strong>现在把run按钮里的方法改成<code>scheduleWithFixedDelay</code>,</strong>  </p>
+<pre><code>public void run(View view) {
+Executors.newScheduledThreadPool(2).scheduleWithFixedDelay(new DelayRunnable(), 0, 5, TimeUnit.SECONDS);
+}
+</code></pre><p>任务代码  </p>
+<pre><code>try {
+ Thread.sleep(4000);
+ } catch (InterruptedException e) {
+ e.printStackTrace();
+ }
+</code></pre><p>执行run方法,打印日志如下</p>
+<pre><code>20181120 22:44:55.055执行任务0
+20181120 22:45:04.004执行任务1
+20181120 22:45:13.013执行任务2
+20181120 22:45:22.022执行任务3
+20181120 22:45:31.031执行任务4
+20181120 22:45:40.040执行任务5
+</code></pre><p>可以看到,任务的执行间隔是9秒,也就是任务执行完之后才会计时执行下一个任务</p>
+<h3 id="情景4-任务耗时7秒-任务间隔5秒-代码和情景3-一样-任务耗时不一样"><a href="#情景4-任务耗时7秒-任务间隔5秒-代码和情景3-一样-任务耗时不一样" class="headerlink" title="情景4  任务耗时7秒,任务间隔5秒,代码和情景3 一样,任务耗时不一样"></a>情景4  任务耗时7秒,任务间隔5秒,代码和情景3 一样,任务耗时不一样</h3><pre><code>try {
+ Thread.sleep(7000);
+ } catch (InterruptedException e) {
+ e.printStackTrace();
+ }
+</code></pre><p>执行run方法,打印日志如下</p>
+<pre><code>20181120 22:31:10.010执行任务0
+20181120 22:31:17.017执行任务1
+20181120 22:31:24.024执行任务2
+20181120 22:31:31.031执行任务3
+20181120 22:31:38.038执行任务4
+20181120 22:31:45.045执行任务5
+</code></pre><p>任务的执行间隔是12秒=(5+7)秒 印证了情景3 的结论,从而得出以下结论</p>
+<p><code>scheduleWithFixedDelay</code>是任务执行完之后才开始计时执行下一个任务<br><code>scheduleAtFixedRate</code>是按一定的时间间隔执行任务,如果任务的执行时间大于间隔时间,一个任务结束之后会立刻执行下一个任务</p>
+
+      
+    </div>
+	
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/18/运动加速器/" rel="next" title="运动加速器">
+                <i class="fa fa-chevron-left"></i> 运动加速器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/19/扫描宝/" rel="prev" title="扫描宝">
+                扫描宝 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -357,6 +582,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+	  
+	  <!-- UY BEGIN -->
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2156522"></script>
+<!-- UY END -->
+	  
+    
+  </div>
+
 
         </div>
         
@@ -377,8 +613,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ou0ikiour.bkt.clouddn.com/avatar.jpeg"
@@ -483,6 +728,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#情景1-任务耗时4秒-任务间隔5秒"><span class="nav-number">1.</span> <span class="nav-text">情景1  任务耗时4秒,任务间隔5秒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#情景2-任务耗时7秒-任务间隔5秒"><span class="nav-number">2.</span> <span class="nav-text">情景2  任务耗时7秒,任务间隔5秒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#情景3-任务耗时4秒-任务间隔5秒"><span class="nav-number">3.</span> <span class="nav-text">情景3 任务耗时4秒,任务间隔5秒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#情景4-任务耗时7秒-任务间隔5秒-代码和情景3-一样-任务耗时不一样"><span class="nav-number">4.</span> <span class="nav-text">情景4  任务耗时7秒,任务间隔5秒,代码和情景3 一样,任务耗时不一样</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -600,10 +861,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 

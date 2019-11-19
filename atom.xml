@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qianbajin.com/"/>
-  <updated>2018-01-24T14:52:42.927Z</updated>
+  <updated>2019-11-19T05:12:16.139Z</updated>
   <id>http://www.qianbajin.com/</id>
   
   <author>
@@ -14,6 +14,129 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>扫描宝</title>
+    <link href="http://www.qianbajin.com/2019/11/19/%E6%89%AB%E6%8F%8F%E5%AE%9D/"/>
+    <id>http://www.qianbajin.com/2019/11/19/扫描宝/</id>
+    <published>2019-11-19T05:12:16.000Z</published>
+    <updated>2019-11-19T05:12:16.139Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ScheduledThreadPool里两个方法的区别</title>
+    <link href="http://www.qianbajin.com/2018/11/20/ScheduledThreadPool%E9%87%8C%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://www.qianbajin.com/2018/11/20/ScheduledThreadPool里两个方法的区别/</id>
+    <published>2018-11-20T14:20:30.000Z</published>
+    <updated>2018-11-20T14:55:00.829Z</updated>
+    
+    <content type="html"><![CDATA[<p>##ScheduledThreadPool 里 </p>
+<blockquote>
+<p>scheduleAtFixedRate(Runnable command,long initialDelay,long period,TimeUnit unit); 和<br>scheduleWithFixedDelay(Runnable command,long initialDelay,long period,TimeUnit unit); 的区别</p>
+</blockquote>
+<p>先解释一下几个参数的含义<br>1.command 即要执行的任务<br>2.initialDelay 从执行这段代码开始到执行第一个任务的延时<br>3.unit 延时的时间单位,可以是 毫秒  秒  分钟..</p>
+<p>现有如下代码  </p>
+<pre><code>public void run(View view) {
+Executors.newScheduledThreadPool(2).scheduleAtFixedRate(new DelayRunnable(), 0, 5, TimeUnit.SECONDS);
+}
+
+static class DelayRunnable implements Runnable {
+
+    AtomicInteger i = new AtomicInteger();
+    SimpleDateFormat format = new SimpleDateFormat(&quot;yyyyMMdd HH:mm:ss.sss&quot;, Locale.getDefault());
+
+    private DelayRunnable() {
+        Log.d(&quot;de&quot;, &quot;new DelayRunnable&quot;);
+    }
+
+    @Override
+    public void run() {
+        Log.d(&quot;de&quot;, format.format(new Date()) + &quot;执行任务&quot; + i.getAndIncrement());
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><h3 id="情景1-任务耗时4秒-任务间隔5秒"><a href="#情景1-任务耗时4秒-任务间隔5秒" class="headerlink" title="情景1  任务耗时4秒,任务间隔5秒"></a>情景1  任务耗时4秒,任务间隔5秒</h3><pre><code>try {
+ Thread.sleep(4000);
+ } catch (InterruptedException e) {
+ e.printStackTrace();
+ }
+</code></pre><p>执行run方法,打印日志如下</p>
+<pre><code>20181120 22:18:26.026执行任务0
+20181120 22:18:31.031执行任务1
+20181120 22:18:36.036执行任务2
+20181120 22:18:41.041执行任务3
+20181120 22:18:46.046执行任务4
+20181120 22:18:51.051执行任务5
+</code></pre><p>可以看到,点击run按钮的那一瞬间,就会先执行一次任务,然后每隔5秒钟执行一次</p>
+<h3 id="情景2-任务耗时7秒-任务间隔5秒"><a href="#情景2-任务耗时7秒-任务间隔5秒" class="headerlink" title="情景2  任务耗时7秒,任务间隔5秒"></a>情景2  任务耗时7秒,任务间隔5秒</h3><pre><code>try {
+ Thread.sleep(7000);
+ } catch (InterruptedException e) {
+ e.printStackTrace();
+ }
+</code></pre><p>执行run方法,打印日志如下</p>
+<pre><code>20181120 22:31:10.010执行任务0
+20181120 22:31:17.017执行任务1
+20181120 22:31:24.024执行任务2
+20181120 22:31:31.031执行任务3
+20181120 22:31:38.038执行任务4
+20181120 22:31:45.045执行任务5
+</code></pre><p>可以看到,任务的执行间隔是7秒,也就是当任务执行结束后,时间已经过了预定的时间间隔,会马上执行上次的任务</p>
+<h3 id="情景3-任务耗时4秒-任务间隔5秒"><a href="#情景3-任务耗时4秒-任务间隔5秒" class="headerlink" title="情景3 任务耗时4秒,任务间隔5秒"></a>情景3 任务耗时4秒,任务间隔5秒</h3><p><strong>现在把run按钮里的方法改成<code>scheduleWithFixedDelay</code>,</strong>  </p>
+<pre><code>public void run(View view) {
+Executors.newScheduledThreadPool(2).scheduleWithFixedDelay(new DelayRunnable(), 0, 5, TimeUnit.SECONDS);
+}
+</code></pre><p>任务代码  </p>
+<pre><code>try {
+ Thread.sleep(4000);
+ } catch (InterruptedException e) {
+ e.printStackTrace();
+ }
+</code></pre><p>执行run方法,打印日志如下</p>
+<pre><code>20181120 22:44:55.055执行任务0
+20181120 22:45:04.004执行任务1
+20181120 22:45:13.013执行任务2
+20181120 22:45:22.022执行任务3
+20181120 22:45:31.031执行任务4
+20181120 22:45:40.040执行任务5
+</code></pre><p>可以看到,任务的执行间隔是9秒,也就是任务执行完之后才会计时执行下一个任务</p>
+<h3 id="情景4-任务耗时7秒-任务间隔5秒-代码和情景3-一样-任务耗时不一样"><a href="#情景4-任务耗时7秒-任务间隔5秒-代码和情景3-一样-任务耗时不一样" class="headerlink" title="情景4  任务耗时7秒,任务间隔5秒,代码和情景3 一样,任务耗时不一样"></a>情景4  任务耗时7秒,任务间隔5秒,代码和情景3 一样,任务耗时不一样</h3><pre><code>try {
+ Thread.sleep(7000);
+ } catch (InterruptedException e) {
+ e.printStackTrace();
+ }
+</code></pre><p>执行run方法,打印日志如下</p>
+<pre><code>20181120 22:31:10.010执行任务0
+20181120 22:31:17.017执行任务1
+20181120 22:31:24.024执行任务2
+20181120 22:31:31.031执行任务3
+20181120 22:31:38.038执行任务4
+20181120 22:31:45.045执行任务5
+</code></pre><p>任务的执行间隔是12秒=(5+7)秒 印证了情景3 的结论,从而得出以下结论</p>
+<p><code>scheduleWithFixedDelay</code>是任务执行完之后才开始计时执行下一个任务<br><code>scheduleAtFixedRate</code>是按一定的时间间隔执行任务,如果任务的执行时间大于间隔时间,一个任务结束之后会立刻执行下一个任务</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##ScheduledThreadPool 里 &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;scheduleAtFixedRate(Runnable command,long initialDelay,long period,TimeUnit unit); 和&lt;br&gt;sche
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://www.qianbajin.com/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>运动加速器</title>
