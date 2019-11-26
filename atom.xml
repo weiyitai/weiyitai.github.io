@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qianbajin.com/"/>
-  <updated>2019-11-19T05:12:16.139Z</updated>
+  <updated>2019-11-26T07:50:02.715Z</updated>
   <id>http://www.qianbajin.com/</id>
   
   <author>
@@ -16,13 +16,24 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>扫描宝</title>
-    <link href="http://www.qianbajin.com/2019/11/19/%E6%89%AB%E6%8F%8F%E5%AE%9D/"/>
-    <id>http://www.qianbajin.com/2019/11/19/扫描宝/</id>
-    <published>2019-11-19T05:12:16.000Z</published>
-    <updated>2019-11-19T05:12:16.139Z</updated>
+    <title>对速尔扫描宝的优化</title>
+    <link href="http://www.qianbajin.com/2019/11/17/%E6%89%AB%E6%8F%8F%E5%AE%9D/"/>
+    <id>http://www.qianbajin.com/2019/11/17/扫描宝/</id>
+    <published>2019-11-17T05:12:16.000Z</published>
+    <updated>2019-11-26T07:50:02.715Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>速尔扫描宝主要是用来打印纸质面单及业务员管理订单的应用</strong><br>下面介绍我接手这个项目的一些情况</p>
+<p>速尔扫描宝是我从2018年7月份开始接手的一个项目，接手之前还是一个eclipse工程，后来转为了Android Studio 工程，后面为了了解用户的一些使用情况接入了腾讯bugly，日活用户8800左右， 用户崩溃率在8%左右，下面是之前的bugly每日简报    </p>
+<p><img src="https://img-blog.csdnimg.cn/20191126144217423.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXlpdGFpMjAxMg==,size_16,color_FFFFFF,t_70" alt="刚接手项目时候的应用崩溃情况">  </p>
+<p><strong>应用崩溃率处于一个较高的水平，为了降低应用的崩溃率，提升用户体验，我在应用内自己捕获了异常，然后上传到公司的服务器数据库，每天将日志归类分组导出，然后分析应用崩溃的原因并将该异常解决掉，经过约半年的时间和几次应用发版，终于将应用崩溃率降到了0.5%左右，下图为最近的bugly每日简报</strong>  </p>
+<p><img src="https://img-blog.csdnimg.cn/20191126151927189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXlpdGFpMjAxMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>除了降低应用的崩溃率，我还做了其他一些优化，比如基础资料更新的下载优化。如果用户第一次使用扫描宝，在使用应用之前必须全量下载基础资料，基础资料是存在本地数据库里的，如果基础资料较多，会进行分页下载。在优化之前，资料更新的逻辑是单线程下载，在插入数据之前会先删除原来的数据避免重复，而且数据是一条条插入的，这样效率比较低。优化后将逻辑改为多线程下载，并将每次下载的数据拼接成一条sql批量插入，在数据下载完成之后再进行一次去重操作，这样效率就提高了很多。资料的全量更新原来需要约2分钟的时间，在优化后只需约15秒,用户更新资料节约的很多时间。</p>
+]]></content>
     
     <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;速尔扫描宝主要是用来打印纸质面单及业务员管理订单的应用&lt;/strong&gt;&lt;br&gt;下面介绍我接手这个项目的一些情况&lt;/p&gt;
+&lt;
     
     </summary>
     

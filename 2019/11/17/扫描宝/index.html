@@ -91,7 +91,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -107,17 +107,19 @@
 
 
 
-<meta name="description" content="##ScheduledThreadPool 里   scheduleAtFixedRate(Runnable command,long initialDelay,long period,TimeUnit unit); 和scheduleWithFixedDelay(Runnable command,long initialDelay,long period,TimeUnit unit); 的区别">
-<meta name="keywords" content="java">
+<meta name="description" content="简介速尔扫描宝主要是用来打印纸质面单及业务员管理订单的应用下面介绍我接手这个项目的一些情况 速尔扫描宝是我从2018年7月份开始接手的一个项目，接手之前还是一个eclipse工程，后来转为了Android Studio 工程，后面为了了解用户的一些使用情况接入了腾讯bugly，日活用户8800左右， 用户崩溃率在8%左右，下面是之前的bugly每日简报        应用崩溃率处于一个较高的水平，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ScheduledThreadPool里两个方法的区别">
-<meta property="og:url" content="http://www.qianbajin.com/2018/11/20/ScheduledThreadPool里两个方法的区别/index.html">
+<meta property="og:title" content="对速尔扫描宝的优化">
+<meta property="og:url" content="http://www.qianbajin.com/2019/11/17/扫描宝/index.html">
 <meta property="og:site_name" content="BAJIN&#39;S BLOG">
-<meta property="og:description" content="##ScheduledThreadPool 里   scheduleAtFixedRate(Runnable command,long initialDelay,long period,TimeUnit unit); 和scheduleWithFixedDelay(Runnable command,long initialDelay,long period,TimeUnit unit); 的区别">
-<meta property="og:updated_time" content="2018-11-20T14:55:00.829Z">
+<meta property="og:description" content="简介速尔扫描宝主要是用来打印纸质面单及业务员管理订单的应用下面介绍我接手这个项目的一些情况 速尔扫描宝是我从2018年7月份开始接手的一个项目，接手之前还是一个eclipse工程，后来转为了Android Studio 工程，后面为了了解用户的一些使用情况接入了腾讯bugly，日活用户8800左右， 用户崩溃率在8%左右，下面是之前的bugly每日简报        应用崩溃率处于一个较高的水平，">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126144217423.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXlpdGFpMjAxMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126151927189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXlpdGFpMjAxMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-11-26T07:50:02.715Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ScheduledThreadPool里两个方法的区别">
-<meta name="twitter:description" content="##ScheduledThreadPool 里   scheduleAtFixedRate(Runnable command,long initialDelay,long period,TimeUnit unit); 和scheduleWithFixedDelay(Runnable command,long initialDelay,long period,TimeUnit unit); 的区别">
+<meta name="twitter:title" content="对速尔扫描宝的优化">
+<meta name="twitter:description" content="简介速尔扫描宝主要是用来打印纸质面单及业务员管理订单的应用下面介绍我接手这个项目的一些情况 速尔扫描宝是我从2018年7月份开始接手的一个项目，接手之前还是一个eclipse工程，后来转为了Android Studio 工程，后面为了了解用户的一些使用情况接入了腾讯bugly，日活用户8800左右， 用户崩溃率在8%左右，下面是之前的bugly每日简报        应用崩溃率处于一个较高的水平，">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191126144217423.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXlpdGFpMjAxMg==,size_16,color_FFFFFF,t_70">
 
 
 
@@ -145,13 +147,13 @@
 
 
 
-  <link rel="canonical" href="http://www.qianbajin.com/2018/11/20/ScheduledThreadPool里两个方法的区别/"/>
+  <link rel="canonical" href="http://www.qianbajin.com/2019/11/17/扫描宝/"/>
 
 
 
 
 
-      <title>ScheduledThreadPool里两个方法的区别 | BAJIN'S BLOG</title>
+      <title>对速尔扫描宝的优化 | BAJIN'S BLOG</title>
   
 
 
@@ -323,7 +325,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.qianbajin.com/2018/11/20/ScheduledThreadPool里两个方法的区别/">
+    <link itemprop="mainEntityOfPage" href="http://www.qianbajin.com/2019/11/17/扫描宝/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="钱八斤">
@@ -340,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ScheduledThreadPool里两个方法的区别</h1>
+          <h1 class="post-title" itemprop="name headline">对速尔扫描宝的优化</h1>
         
 
         <div class="post-meta">
@@ -352,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-20T22:20:30+08:00">
-                2018-11-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-17T13:12:16+08:00">
+                2019-11-17
               </time>
             
 
@@ -370,7 +372,7 @@
 
           
           
-             <span id="/2018/11/20/ScheduledThreadPool里两个方法的区别/" class="leancloud_visitors" data-flag-title="ScheduledThreadPool里两个方法的区别">
+             <span id="/2019/11/17/扫描宝/" class="leancloud_visitors" data-flag-title="对速尔扫描宝的优化">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -395,7 +397,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  775 
+                  508 
                 </span>
               
 
@@ -417,93 +419,12 @@
       
 
       
-        <p>##ScheduledThreadPool 里 </p>
-<blockquote>
-<p>scheduleAtFixedRate(Runnable command,long initialDelay,long period,TimeUnit unit); 和<br>scheduleWithFixedDelay(Runnable command,long initialDelay,long period,TimeUnit unit); 的区别</p>
-</blockquote>
-<p>先解释一下几个参数的含义<br>1.command 即要执行的任务<br>2.initialDelay 从执行这段代码开始到执行第一个任务的延时<br>3.unit 延时的时间单位,可以是 毫秒  秒  分钟..</p>
-<p>现有如下代码  </p>
-<pre><code>public void run(View view) {
-Executors.newScheduledThreadPool(2).scheduleAtFixedRate(new DelayRunnable(), 0, 5, TimeUnit.SECONDS);
-}
-
-static class DelayRunnable implements Runnable {
-
-    AtomicInteger i = new AtomicInteger();
-    SimpleDateFormat format = new SimpleDateFormat(&quot;yyyyMMdd HH:mm:ss.sss&quot;, Locale.getDefault());
-
-    private DelayRunnable() {
-        Log.d(&quot;de&quot;, &quot;new DelayRunnable&quot;);
-    }
-
-    @Override
-    public void run() {
-        Log.d(&quot;de&quot;, format.format(new Date()) + &quot;执行任务&quot; + i.getAndIncrement());
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre><h3 id="情景1-任务耗时4秒-任务间隔5秒"><a href="#情景1-任务耗时4秒-任务间隔5秒" class="headerlink" title="情景1  任务耗时4秒,任务间隔5秒"></a>情景1  任务耗时4秒,任务间隔5秒</h3><pre><code>try {
- Thread.sleep(4000);
- } catch (InterruptedException e) {
- e.printStackTrace();
- }
-</code></pre><p>执行run方法,打印日志如下</p>
-<pre><code>20181120 22:18:26.026执行任务0
-20181120 22:18:31.031执行任务1
-20181120 22:18:36.036执行任务2
-20181120 22:18:41.041执行任务3
-20181120 22:18:46.046执行任务4
-20181120 22:18:51.051执行任务5
-</code></pre><p>可以看到,点击run按钮的那一瞬间,就会先执行一次任务,然后每隔5秒钟执行一次</p>
-<h3 id="情景2-任务耗时7秒-任务间隔5秒"><a href="#情景2-任务耗时7秒-任务间隔5秒" class="headerlink" title="情景2  任务耗时7秒,任务间隔5秒"></a>情景2  任务耗时7秒,任务间隔5秒</h3><pre><code>try {
- Thread.sleep(7000);
- } catch (InterruptedException e) {
- e.printStackTrace();
- }
-</code></pre><p>执行run方法,打印日志如下</p>
-<pre><code>20181120 22:31:10.010执行任务0
-20181120 22:31:17.017执行任务1
-20181120 22:31:24.024执行任务2
-20181120 22:31:31.031执行任务3
-20181120 22:31:38.038执行任务4
-20181120 22:31:45.045执行任务5
-</code></pre><p>可以看到,任务的执行间隔是7秒,也就是当任务执行结束后,时间已经过了预定的时间间隔,会马上执行上次的任务</p>
-<h3 id="情景3-任务耗时4秒-任务间隔5秒"><a href="#情景3-任务耗时4秒-任务间隔5秒" class="headerlink" title="情景3 任务耗时4秒,任务间隔5秒"></a>情景3 任务耗时4秒,任务间隔5秒</h3><p><strong>现在把run按钮里的方法改成<code>scheduleWithFixedDelay</code>,</strong>  </p>
-<pre><code>public void run(View view) {
-Executors.newScheduledThreadPool(2).scheduleWithFixedDelay(new DelayRunnable(), 0, 5, TimeUnit.SECONDS);
-}
-</code></pre><p>任务代码  </p>
-<pre><code>try {
- Thread.sleep(4000);
- } catch (InterruptedException e) {
- e.printStackTrace();
- }
-</code></pre><p>执行run方法,打印日志如下</p>
-<pre><code>20181120 22:44:55.055执行任务0
-20181120 22:45:04.004执行任务1
-20181120 22:45:13.013执行任务2
-20181120 22:45:22.022执行任务3
-20181120 22:45:31.031执行任务4
-20181120 22:45:40.040执行任务5
-</code></pre><p>可以看到,任务的执行间隔是9秒,也就是任务执行完之后才会计时执行下一个任务</p>
-<h3 id="情景4-任务耗时7秒-任务间隔5秒-代码和情景3-一样-任务耗时不一样"><a href="#情景4-任务耗时7秒-任务间隔5秒-代码和情景3-一样-任务耗时不一样" class="headerlink" title="情景4  任务耗时7秒,任务间隔5秒,代码和情景3 一样,任务耗时不一样"></a>情景4  任务耗时7秒,任务间隔5秒,代码和情景3 一样,任务耗时不一样</h3><pre><code>try {
- Thread.sleep(7000);
- } catch (InterruptedException e) {
- e.printStackTrace();
- }
-</code></pre><p>执行run方法,打印日志如下</p>
-<pre><code>20181120 22:31:10.010执行任务0
-20181120 22:31:17.017执行任务1
-20181120 22:31:24.024执行任务2
-20181120 22:31:31.031执行任务3
-20181120 22:31:38.038执行任务4
-20181120 22:31:45.045执行任务5
-</code></pre><p>任务的执行间隔是12秒=(5+7)秒 印证了情景3 的结论,从而得出以下结论</p>
-<p><code>scheduleWithFixedDelay</code>是任务执行完之后才开始计时执行下一个任务<br><code>scheduleAtFixedRate</code>是按一定的时间间隔执行任务,如果任务的执行时间大于间隔时间,一个任务结束之后会立刻执行下一个任务</p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>速尔扫描宝主要是用来打印纸质面单及业务员管理订单的应用</strong><br>下面介绍我接手这个项目的一些情况</p>
+<p>速尔扫描宝是我从2018年7月份开始接手的一个项目，接手之前还是一个eclipse工程，后来转为了Android Studio 工程，后面为了了解用户的一些使用情况接入了腾讯bugly，日活用户8800左右， 用户崩溃率在8%左右，下面是之前的bugly每日简报    </p>
+<p><img src="https://img-blog.csdnimg.cn/20191126144217423.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXlpdGFpMjAxMg==,size_16,color_FFFFFF,t_70" alt="刚接手项目时候的应用崩溃情况">  </p>
+<p><strong>应用崩溃率处于一个较高的水平，为了降低应用的崩溃率，提升用户体验，我在应用内自己捕获了异常，然后上传到公司的服务器数据库，每天将日志归类分组导出，然后分析应用崩溃的原因并将该异常解决掉，经过约半年的时间和几次应用发版，终于将应用崩溃率降到了0.5%左右，下图为最近的bugly每日简报</strong>  </p>
+<p><img src="https://img-blog.csdnimg.cn/20191126151927189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXlpdGFpMjAxMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>除了降低应用的崩溃率，我还做了其他一些优化，比如基础资料更新的下载优化。如果用户第一次使用扫描宝，在使用应用之前必须全量下载基础资料，基础资料是存在本地数据库里的，如果基础资料较多，会进行分页下载。在优化之前，资料更新的逻辑是单线程下载，在插入数据之前会先删除原来的数据避免重复，而且数据是一条条插入的，这样效率比较低。优化后将逻辑改为多线程下载，并将每次下载的数据拼接成一条sql批量插入，在数据下载完成之后再进行一次去重操作，这样效率就提高了很多。资料的全量更新原来需要约2分钟的时间，在优化后只需约15秒,用户更新资料节约的很多时间。</p>
 
       
     </div>
@@ -531,12 +452,6 @@ Executors.newScheduledThreadPool(2).scheduleWithFixedDelay(new DelayRunnable(), 
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/java/" rel="tag"># java</a>
-          
-        </div>
-      
 
       
       
@@ -546,8 +461,8 @@ Executors.newScheduledThreadPool(2).scheduleWithFixedDelay(new DelayRunnable(), 
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/18/运动加速器/" rel="next" title="运动加速器">
-                <i class="fa fa-chevron-left"></i> 运动加速器
+              <a href="/2018/11/20/ScheduledThreadPool里两个方法的区别/" rel="next" title="ScheduledThreadPool里两个方法的区别">
+                <i class="fa fa-chevron-left"></i> ScheduledThreadPool里两个方法的区别
               </a>
             
           </div>
@@ -555,10 +470,6 @@ Executors.newScheduledThreadPool(2).scheduleWithFixedDelay(new DelayRunnable(), 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/17/扫描宝/" rel="prev" title="对速尔扫描宝的优化">
-                对速尔扫描宝的优化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -738,7 +649,7 @@ Executors.newScheduledThreadPool(2).scheduleWithFixedDelay(new DelayRunnable(), 
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#情景1-任务耗时4秒-任务间隔5秒"><span class="nav-number">1.</span> <span class="nav-text">情景1  任务耗时4秒,任务间隔5秒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#情景2-任务耗时7秒-任务间隔5秒"><span class="nav-number">2.</span> <span class="nav-text">情景2  任务耗时7秒,任务间隔5秒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#情景3-任务耗时4秒-任务间隔5秒"><span class="nav-number">3.</span> <span class="nav-text">情景3 任务耗时4秒,任务间隔5秒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#情景4-任务耗时7秒-任务间隔5秒-代码和情景3-一样-任务耗时不一样"><span class="nav-number">4.</span> <span class="nav-text">情景4  任务耗时7秒,任务间隔5秒,代码和情景3 一样,任务耗时不一样</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li></ol></div>
             
 
           </div>
